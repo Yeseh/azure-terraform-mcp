@@ -1,0 +1,131 @@
+# Azure CIS Benchmark Checkov Configuration
+# This configuration file defines Azure-specific security checks aligned with CIS benchmarks
+
+check-type: terraform
+framework: terraform
+
+# Azure CIS Benchmark v1.5.0 Controls
+# Reference: https://www.cisecurity.org/benchmark/azure
+
+# Identity and Access Management
+include-ids:
+  # Section 1: Identity and Access Management
+  - CKV_AZURE_1     # Ensure that multi-factor authentication is enabled for all privileged users
+  - CKV_AZURE_2     # Ensure guest users are reviewed on a monthly basis
+  - CKV_AZURE_3     # Ensure that 'Users can add gallery apps to their Access Panel' is set to 'No'
+  - CKV_AZURE_4     # Ensure that 'Users can register applications' is set to 'No'
+  - CKV_AZURE_5     # Ensure that 'Guest user permissions are limited' is set to 'Yes'
+  - CKV_AZURE_6     # Ensure that 'Members can invite' is set to 'No'
+  - CKV_AZURE_7     # Ensure that 'Guests can invite' is set to 'No'
+  - CKV_AZURE_8     # Ensure that 'Restrict access to Azure AD administration portal' is set to 'Yes'
+  - CKV_AZURE_9     # Ensure that 'Users can create security groups' is set to 'No'
+  - CKV_AZURE_10    # Ensure that 'Users can create Office 365 groups' is set to 'No'
+  - CKV_AZURE_11    # Ensure that 'Require Multi-Factor Auth to join devices' is set to 'Yes'
+  - CKV_AZURE_12    # Ensure that 'Require Multi-Factor Auth to register or join devices with Azure AD' is set to 'Yes'
+  - CKV_AZURE_13    # Ensure that 'Number of methods required to reset' is set to '2'
+  - CKV_AZURE_14    # Ensure that 'Number of days before users are asked to re-confirm their authentication information' is not set to '0'
+  - CKV_AZURE_15    # Ensure that 'Notify users on password resets' is set to 'Yes'
+  - CKV_AZURE_16    # Ensure that 'Notify all admins when other admins reset their password' is set to 'Yes'
+  - CKV_AZURE_17    # Ensure that 'Users can consent to apps accessing company data on their behalf' is set to 'No'
+  - CKV_AZURE_18    # Ensure that 'Password Hash Synchronization' is 'Enabled'
+
+  # Section 2: Security Center
+  - CKV_AZURE_19    # Ensure that 'Standard pricing tier' is selected
+  - CKV_AZURE_20    # Ensure that security contact 'Phone number' is set
+  - CKV_AZURE_21    # Ensure that 'Send email notification for high severity alerts' is set to 'On'
+  - CKV_AZURE_22    # Ensure that 'Send email also to subscription owners' is set to 'On'
+  - CKV_AZURE_23    # Ensure that 'Automatic provisioning of monitoring agent' is set to 'On'
+
+  # Section 3: Storage Accounts
+  - CKV_AZURE_33    # Ensure Storage account is using the latest version of TLS encryption
+  - CKV_AZURE_34    # Ensure that 'Secure transfer required' is set to 'Enabled'
+  - CKV_AZURE_35    # Ensure default network access rule for Storage Accounts is set to deny
+  - CKV_AZURE_36    # Ensure storage for critical data are encrypted with Customer Managed Key
+  - CKV_AZURE_37    # Ensure that storage account access keys are periodically regenerated
+  - CKV_AZURE_38    # Ensure soft delete is enabled for Azure Storage
+  - CKV_AZURE_39    # Ensure storage account is configured to use private endpoints
+  - CKV_AZURE_40    # Ensure storage account is not configured with Shared Key authorization
+  - CKV_AZURE_41    # Ensure storage account is configured with SAS expiration policy
+  - CKV_AZURE_42    # Ensure storage accounts are accessible only by allowed network
+  - CKV_AZURE_43    # Ensure storage account is configured with private endpoint connection
+  - CKV_AZURE_44    # Ensure storage account is using the latest version of TLS encryption
+  - CKV_AZURE_59    # Ensure that storage account public access is disallowed
+
+  # Section 4: Database Services
+  - CKV_AZURE_23    # Ensure that SQL server TDE protector is encrypted with BYOK (Use your own key)
+  - CKV_AZURE_24    # Ensure that 'Auditing' is set to 'On' for SQL servers
+  - CKV_AZURE_25    # Ensure that 'Threat Detection' is set to 'On' for SQL servers
+  - CKV_AZURE_26    # Ensure that 'Send alerts to' is set for SQL servers
+  - CKV_AZURE_27    # Ensure that 'Email service and co-administrators' is set to 'Enabled' for SQL servers
+  - CKV_AZURE_28    # Ensure that Azure SQL Database Transparent Data Encryption is enabled
+  - CKV_AZURE_29    # Ensure that 'Data encryption' is set to 'On' on a SQL Database
+
+  # Section 5: Logging and Monitoring
+  - CKV_AZURE_37    # Ensure that Activity Log Alert exists for Create Policy Assignment
+  - CKV_AZURE_38    # Ensure that Activity Log Alert exists for Create or Update Network Security Group
+  - CKV_AZURE_39    # Ensure that Activity Log Alert exists for Delete Network Security Group
+  - CKV_AZURE_40    # Ensure that Activity Log Alert exists for Create or Update Network Security Group Rule
+  - CKV_AZURE_41    # Ensure that Activity Log Alert exists for Delete Network Security Group Rule
+  - CKV_AZURE_42    # Ensure that Activity Log Alert exists for Create or Update Security Solution
+  - CKV_AZURE_43    # Ensure that Activity Log Alert exists for Delete Security Solution
+  - CKV_AZURE_44    # Ensure that Activity Log Alert exists for Create or Update SQL Server Firewall Rule
+  - CKV_AZURE_45    # Ensure that Activity Log Alert exists for Delete SQL Server Firewall Rule
+  - CKV_AZURE_46    # Ensure that 'Log profile' captures activity logs for all regions including global
+  - CKV_AZURE_47    # Ensure that logging for Azure KeyVault is 'Enabled'
+
+  # Section 6: Networking
+  - CKV_AZURE_54    # Ensure that Network security group flow log retention period is 'greater than or equal to 90 days'
+  - CKV_AZURE_55    # Ensure that Network Watcher is 'Enabled'
+  - CKV_AZURE_94    # Ensure that Azure Front Door enables WAF
+
+  # Section 7: Virtual Machines
+  - CKV_AZURE_50    # Ensure Virtual Machine is provisioned with managed disk
+  - CKV_AZURE_51    # Ensure AKS local admin account is disabled
+  - CKV_AZURE_52    # Ensure AKS has an API Server Authorized IP Ranges enabled
+  - CKV_AZURE_78    # Ensure that the AKS cluster upgrade channel is not set to 'none'
+
+  # Section 8: Key Vault
+  - CKV_AZURE_109   # Ensure that key vault allows firewall rules settings
+  - CKV_AZURE_110   # Ensure that key vault enables soft delete
+  - CKV_AZURE_111   # Ensure that key vault enables purge protection
+  - CKV_AZURE_112   # Ensure that key vault key expiration is set
+  - CKV_AZURE_113   # Ensure that key vault secret expiration is set
+  - CKV_AZURE_114   # Ensure that key vault certificate expiration is set
+  - CKV_AZURE_115   # Ensure that key vault is recoverable
+  - CKV_AZURE_116   # Ensure that key vault logging is enabled
+  - CKV_AZURE_117   # Ensure that key vault is not publicly accessible
+  - CKV_AZURE_118   # Ensure that key vault uses private endpoint connection
+  - CKV_AZURE_119   # Ensure that key vault enables RBAC authorization
+
+  # Section 9: App Service
+  - CKV_AZURE_120   # Ensure that App service authentication is set up
+  - CKV_AZURE_121   # Ensure that App service is using the latest version of TLS encryption
+  - CKV_AZURE_122   # Ensure that Application Gateway is enabled with WAF
+  - CKV_AZURE_123   # Ensure that App service allows only HTTPS
+  - CKV_AZURE_124   # Ensure that App service is using managed service identity
+  - CKV_AZURE_125   # Ensure that App service disables public network access
+
+# Custom Azure compliance checks
+custom-checks:
+  - name: "azure-resource-naming-convention"
+    description: "Ensure Azure resources follow naming conventions"
+    severity: "MEDIUM"
+    
+  - name: "azure-resource-tagging"
+    description: "Ensure Azure resources are properly tagged"
+    severity: "HIGH"
+    
+  - name: "azure-network-security"
+    description: "Ensure Azure network security is properly configured"
+    severity: "HIGH"
+
+# Output configuration
+output:
+  format: json
+  compact: false
+  quiet: true
+  no-guide: false
+
+# Suppressions for known false positives
+# (Add specific suppression rules as needed)
+suppressions: []
