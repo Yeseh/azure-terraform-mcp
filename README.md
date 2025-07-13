@@ -2,6 +2,10 @@
 
 MCP server for Terraform on Azure best practices, infrastructure as code patterns, and security compliance with Checkov.
 
+## Usage
+
+Clone the repository
+
 ## Features
 
 - **Terraform Best Practices** - Get prescriptive Terraform advice for building applications on Azure
@@ -69,28 +73,9 @@ MCP server for Terraform on Azure best practices, infrastructure as code pattern
 
 ## Installation
 
-[![Install MCP Server](https://cursor.com/deeplink/mcp-install-light.svg)](https://cursor.com/install-mcp?name=xebiams.terraform-mcp-server&config=eyJjb21tYW5kIjoidXZ4IGF3c2xhYnMudGVycmFmb3JtLW1jcC1zZXJ2ZXJAbGF0ZXN0IiwiZW52Ijp7IkZBU1RNQ1BfTE9HX0xFVkVMIjoiRVJST1IifSwiZGlzYWJsZWQiOmZhbHNlLCJhdXRvQXBwcm92ZSI6W119)
+ `gh repoc clone Yeseh/azure-terraform-mcp && cd azure-terraform-mcp && docker build -t xebiams/terraform-mcp-server .`:
 
-Configure the MCP server in your MCP client configuration (e.g., for Amazon Q Developer CLI, edit `~/.aws/amazonq/mcp.json`):
-
-```json
-{
-  "mcpServers": {
-    "xebiams.terraform-mcp-server": {
-      "command": "uvx",
-      "args": ["xebiams.terraform-mcp-server@latest"],
-      "env": {
-        "FASTMCP_LOG_LEVEL": "ERROR"
-      },
-      "disabled": false,
-      "autoApprove": []
-    }
-  }
-}
-```
-
-or docker after a successful `docker build -t xebiams/terraform-mcp-server .`:
-
+Then add the MCP configuration to your client of choice:
 ```json
   {
     "mcpServers": {
