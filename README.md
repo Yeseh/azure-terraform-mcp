@@ -97,6 +97,8 @@ Then add the MCP configuration to your client of choice:
   }
 ```
 
+Add the [MCP Instructions](https://github.com/Yeseh/azure-terraform-mcp/blob/main/xebiams/terraform_mcp_server/static/MCP_INSTRUCTIONS.md) to your agent configuration
+
 ## Security Considerations
 
 When using this MCP server, you should consider:
